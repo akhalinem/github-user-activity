@@ -1,0 +1,24 @@
+# .NET Core build folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code directory
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]uild/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
