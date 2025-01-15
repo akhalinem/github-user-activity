@@ -1,11 +1,11 @@
-﻿using GitHubUserActivity.Models;
-using GitHubUserActivity.Services;
+﻿using GitHubUserActivity.Services;
 
 namespace GitHubUserActivity;
 
 public class Program
 {
     private static readonly GitHubService _githubService = new();
+    private static readonly GitHubEventFormatter _formatter = new();
 
     public static async Task<int> Main(string[] args)
     {
@@ -24,7 +24,7 @@ public class Program
 
             foreach (var e in events)
             {
-                Console.WriteLine($"- {DisplayEvent(e)}");
+                Console.WriteLine($"- {_formatter.Format(e)}");
             }
 
             return 0;
@@ -35,20 +35,5 @@ public class Program
             Console.WriteLine($"Details: {ex.Message}");
             return 1;
         }
-    }
-
-    private static string DisplayEvent(GitHubEvent e)
-    {
-        return e.Type switch
-        {
-            "PushEvent" => $"Pushed {e.Payload.Commits?.Count} commit(s) to {e.Repo.Name}",
-            "IssuesEvent" => $"{e.Payload.Action} an issue in {e.Repo.Name}",
-            "WatchEvent" when e.Payload.Action == "started" => $"Starred {e.Repo.Name}",
-            "CreateEvent" when e.Payload.RefType == "repository" => $"Created {e.Repo.Name} repository",
-            "CreateEvent" => $"Created {e.Payload.Ref} branch in {e.Repo.Name}",
-            "ForkEvent" => $"Forked {e.Repo.Name}",
-            "PublicEvent" => $"Made {e.Repo.Name} public",
-            _ => $"{e.Type} in {e.Repo.Name}"
-        };
     }
 }
