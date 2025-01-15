@@ -1,10 +1,10 @@
-using GitHubUserActivity.Models;
+using GithubUserActivity.Models;
 
-namespace GitHubUserActivity.Services;
+namespace GithubUserActivity.Services;
 
-public class GitHubEventFormatter
+public class GithubEventFormatter
 {
-    public string Format(GitHubEvent e)
+    public string Format(GithubEvent e)
     {
         return e.Type switch
         {

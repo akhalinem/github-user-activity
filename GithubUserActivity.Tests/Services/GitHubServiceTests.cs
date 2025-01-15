@@ -2,36 +2,36 @@ using System.Net;
 using System.Text.Json;
 using Moq;
 using Moq.Protected;
-using GitHubUserActivity.Models;
-using GitHubUserActivity.Services;
+using GithubUserActivity.Models;
+using GithubUserActivity.Services;
 
-namespace GitHubUserActivity.Tests.Services;
+namespace GithubUserActivity.Tests.Services;
 
-public class GitHubServiceTests
+public class GithubServiceTests
 {
     private readonly Mock<HttpMessageHandler> _mockHttpMessageHandler;
-    private readonly GitHubService _service;
+    private readonly GithubService _service;
 
-    public GitHubServiceTests()
+    public GithubServiceTests()
     {
         _mockHttpMessageHandler = new Mock<HttpMessageHandler>();
         var client = new HttpClient(_mockHttpMessageHandler.Object)
         {
             BaseAddress = new Uri("https://api.github.com")
         };
-        _service = new GitHubService(client);
+        _service = new GithubService(client);
     }
 
     [Fact]
     public async Task GetUserEventsAsync_ValidUsername_ReturnsEvents()
     {
         // Arrange
-        var events = new List<GitHubEvent>
+        var events = new List<GithubEvent>
         {
             new() {
                 Type = "PushEvent",
-                Repo = new GitHubRepo { Name = "test/repo" },
-                Payload = new GitHubPayload { Commits = [new GitHubCommit()] }
+                Repo = new GithubRepo { Name = "test/repo" },
+                Payload = new GithubPayload { Commits = [new GithubCommit()] }
             }
         };
         var response = new HttpResponseMessage

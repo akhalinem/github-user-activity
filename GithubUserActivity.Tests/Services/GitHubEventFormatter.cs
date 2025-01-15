@@ -1,11 +1,11 @@
-using GitHubUserActivity.Models;
-using GitHubUserActivity.Services;
+using GithubUserActivity.Models;
+using GithubUserActivity.Services;
 
-namespace GitHubUserActivity.Tests.Services;
+namespace GithubUserActivity.Tests.Services;
 
-public class GitHubEventFormatterTests
+public class GithubEventFormatterTests
 {
-    private readonly GitHubEventFormatter _formatter = new();
+    private readonly GithubEventFormatter _formatter = new();
 
     [Theory]
     [InlineData("PushEvent", "test/repo", 1, "Pushed 1 commit(s) to test/repo")]
@@ -14,14 +14,14 @@ public class GitHubEventFormatterTests
     [InlineData("UnknownEvent", "test/repo", null, "UnknownEvent in test/repo")]
     public void Format_ReturnsCorrectString(string eventType, string repoName, int? commitCount, string expected)
     {
-        var githubEvent = new GitHubEvent
+        var githubEvent = new GithubEvent
         {
             Type = eventType,
-            Repo = new GitHubRepo { Name = repoName },
-            Payload = new GitHubPayload
+            Repo = new GithubRepo { Name = repoName },
+            Payload = new GithubPayload
             {
                 Action = eventType == "WatchEvent" ? "started" : "opened",
-                Commits = commitCount.HasValue ? [new GitHubCommit()] : null
+                Commits = commitCount.HasValue ? [new GithubCommit()] : null
             }
         };
 

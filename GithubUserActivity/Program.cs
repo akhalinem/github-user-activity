@@ -1,17 +1,17 @@
-﻿using GitHubUserActivity.Services;
+﻿using GithubUserActivity.Services;
 
-namespace GitHubUserActivity;
+namespace GithubUserActivity;
 
 public class Program
 {
-    private static readonly IGitHubService _githubService = new GitHubService();
-    private static readonly GitHubEventFormatter _formatter = new();
+    private static readonly IGithubService _githubService = new GithubService();
+    private static readonly GithubEventFormatter _formatter = new();
 
     public static async Task<int> Main(string[] args)
     {
         if (args.Length == 0)
         {
-            Console.WriteLine("Please provide a GitHub username");
+            Console.WriteLine("Please provide a Github username");
             Console.WriteLine("Usage: github-activity <username>");
             return 1;
         }

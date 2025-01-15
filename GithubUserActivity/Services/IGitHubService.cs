@@ -1,8 +1,8 @@
-using GitHubUserActivity.Models;
+using GithubUserActivity.Models;
 
-namespace GitHubUserActivity.Services;
+namespace GithubUserActivity.Services;
 
-public interface IGitHubService
+public interface IGithubService
 {
-    public Task<IEnumerable<GitHubEvent>> GetUserEventsAsync(string username);
+    public Task<IEnumerable<GithubEvent>> GetUserEventsAsync(string username);
 }

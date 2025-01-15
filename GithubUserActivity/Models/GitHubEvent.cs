@@ -1,35 +1,35 @@
-namespace GitHubUserActivity.Models;
+namespace GithubUserActivity.Models;
 
-public class GitHubEvent
+public class GithubEvent
 {
 
     public string Type { get; set; } = string.Empty;
-    public GitHubActor Actor { get; set; } = new();
-    public GitHubRepo Repo { get; set; } = new();
-    public GitHubPayload Payload { get; set; } = new();
+    public GithubActor Actor { get; set; } = new();
+    public GithubRepo Repo { get; set; } = new();
+    public GithubPayload Payload { get; set; } = new();
     public DateTime CreatedAt { get; set; }
 }
 
-public class GitHubActor
+public class GithubActor
 {
     public string Login { get; set; } = string.Empty;
     public string DisplayLogin { get; set; } = string.Empty;
 }
 
-public class GitHubRepo
+public class GithubRepo
 {
     public string Name { get; set; } = string.Empty;
 }
 
-public class GitHubPayload
+public class GithubPayload
 {
     public string? Action { get; set; }
     public string? Ref { get; set; }
     public string? RefType { get; set; }
-    public List<GitHubCommit>? Commits { get; set; }
+    public List<GithubCommit>? Commits { get; set; }
 }
 
-public class GitHubCommit
+public class GithubCommit
 {
     public string Sha { get; set; } = string.Empty;
     public string Message { get; set; } = string.Empty;
