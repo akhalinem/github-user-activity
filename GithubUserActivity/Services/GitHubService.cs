@@ -3,21 +3,31 @@ using GitHubUserActivity.Models;
 
 namespace GitHubUserActivity.Services;
 
-public class GitHubService : IDisposable
+public class GitHubService : IGitHubService, IDisposable
 {
     private readonly HttpClient _httpClient;
     private const string BaseUrl = "https://api.github.com";
+    private readonly bool _disposeClient;
 
-    public GitHubService()
+    public GitHubService(HttpClient? httpClient = null)
     {
-        _httpClient = new HttpClient
+        if (httpClient != null)
         {
-            Timeout = TimeSpan.FromSeconds(30)
-        };
-        _httpClient.DefaultRequestHeaders.Add("User-Agent", "GitHub-User-Activity-CLI");
+            _httpClient = httpClient;
+            _disposeClient = false;
+        }
+        else
+        {
+            _httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            };
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "GitHub-User-Activity-CLI");
+            _disposeClient = true;
+        }
     }
 
-    public async Task<List<GitHubEvent>> GetUserEventsAsync(string username)
+    public async Task<IEnumerable<GitHubEvent>> GetUserEventsAsync(string username)
     {
         try
         {
@@ -33,12 +43,15 @@ public class GitHubService : IDisposable
         }
         catch (HttpRequestException ex)
         {
-            throw new Exception($"Failed to fetch GitHub events: {ex.Message}", ex);
+            throw new HttpRequestException($"Failed to fetch GitHub events: {ex.Message}", ex);
         }
     }
 
     public void Dispose()
     {
-        _httpClient.Dispose();
+        if (_disposeClient)
+        {
+            _httpClient.Dispose();
+        }
     }
 }

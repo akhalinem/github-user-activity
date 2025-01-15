@@ -1,8 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubUserActivity", "GithubUserActivity\GithubUserActivity.csproj", "{AE785F46-A99C-F4BB-7693-A8699F930271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubUserActivity.Tests", "GithubUserActivity.Tests\GithubUserActivity.Tests.csproj", "{35615556-04B2-4E30-99EB-40DCB85EE597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		{AE785F46-A99C-F4BB-7693-A8699F930271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE785F46-A99C-F4BB-7693-A8699F930271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE785F46-A99C-F4BB-7693-A8699F930271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35615556-04B2-4E30-99EB-40DCB85EE597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35615556-04B2-4E30-99EB-40DCB85EE597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35615556-04B2-4E30-99EB-40DCB85EE597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35615556-04B2-4E30-99EB-40DCB85EE597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

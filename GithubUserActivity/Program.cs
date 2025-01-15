@@ -4,7 +4,7 @@ namespace GitHubUserActivity;
 
 public class Program
 {
-    private static readonly GitHubService _githubService = new();
+    private static readonly IGitHubService _githubService = new GitHubService();
     private static readonly GitHubEventFormatter _formatter = new();
 
     public static async Task<int> Main(string[] args)
