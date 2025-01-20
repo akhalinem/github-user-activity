@@ -1,5 +1,7 @@
 # GitHub User Activity CLI
 
+> Project requirements from [roadmap.sh/projects/github-user-activity](https://roadmap.sh/projects/github-user-activity)
+
 A command-line interface tool that displays recent GitHub activity for a specified user.
 
 ## Description
